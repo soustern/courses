@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MArathon 2022</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Just a form">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Go back</a>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <h1>Form</h1>
+            <figure>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAOGKmd_JuRnoZMeNyDPqTyDSNjamtLssFBQ&usqp=CAU"
+                    alt="MArathon runner">
+                <figcaption>Marathon runner</figcaption>
+            </figure>
+            <p>The marathon <b>will</b> happen</p>
+            <section class="Form">
+                <h2>Fill the form:</h2>
+                <form action="/marathon">
+                    <div>
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name" id="first_name" placeholder="Enter your first name"
+                            required>
+                        <label for="last_name">Last name:</label>
+                        <input type="text" name="last_name" id="last_name" required>
+                    </div>
+                    <p>Select a race:</p>
+                    <div>
+                        <input type="radio" id="fun_run_5k" name="marathon_chosen" value="fun_run_5k">
+                        <label for="fun_run_5k">Fun Run 5k</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="half_marathon" name="marathon_chosen" value="half_marathon">
+                        <label for="half_marathon">Half marathon</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="full_marathon" name="marathon_chosen" value="full_marathon">
+                        <label for="full_marathon">Full marathon</label>
+                    </div>
+                    <label for="email">Email:</label>
+                    <input placeholder="email here" type="email" id="email" name="email" required>
+                    <label for="password">Password:</label>
+                    <input placeholder="password here" type="password" id="password" name="password" required>
+                    <div>
+                        <label for="age_group">Select a age group:</label>
+                        <select name="age" id="age_group">
+                            <option value="under_18">Under 18</option>
+                            <option value="18-50" selected>18-50</option>
+                            <option value="50+">50+</option>
+                        </select>
+                    </div>
+                    <!-- EMMET: input:radio#something.something[name="yea"] -->
+                    <button>Submit</button>
+                </form>
+            </section>
+        </article>
+    </main>
+    <footer></footer>
+</body>
+
+</html>

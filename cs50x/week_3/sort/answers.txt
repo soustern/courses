@@ -1,0 +1,11 @@
+sort1 uses: Bubble sortyes
+
+How do you know?: Best performance when omega condition was met.
+
+sort2 uses: Merge sort
+
+How do you know?: Best performance on unsorted lists.
+
+sort3 uses: Selection sort
+
+How do you know?: MId term performance on unsorted lists.

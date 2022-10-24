@@ -1,0 +1,160 @@
+body {
+    background-color: #4B4453;
+    padding: 50px;
+}
+
+h1,
+h2 {
+    color: #F9F871;
+}
+
+h2::before {
+    content: '+';
+    text-align: center;
+    display: block;
+    color: black;
+    width: 100%;
+    height: 50%;
+    background-color: white;
+}
+
+article::after {
+    content: '-';
+    text-align: center;
+    display: block;
+    color: black;
+    width: 100%;
+    height: 50%;
+    background-color: white;
+}
+
+article::after {
+    content: '-';
+    display: inline;
+    color: black;
+    width: 100%;
+    height: 50%;
+    background-color: white;
+}
+
+input+button {
+    background-color: magenta;
+}
+
+p,
+a {
+    color: #F9F871;
+    text-decoration: none;
+    transition-property: color, font-size;
+}
+
+a:hover {
+    color: white;
+    font-size: larger;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+
+li a {
+    font-size: xx-large;
+}
+
+ul {
+    list-style: square;
+}
+
+ul li::before {
+    content: "\200B";
+}
+
+article button {
+    background-color: burlywood;
+    font-weight: 900;
+}
+
+.article {
+    padding: 10rem;
+}
+
+article button:hover {
+    background-image: linear-gradient(to top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    cursor: pointer;
+    color: darkgoldenrod;
+}
+
+button {
+    border-radius: 10px;
+    border: none;
+    background-color: #00C9A7;
+    color: white;
+    padding: 0.5rem;
+}
+
+#sign-up {
+    background-color: #4B4453;
+    color: white;
+    font-size: 20px;
+    transition-property: border, background-color;
+}
+
+#sign-up:hover {
+    background-color: none;
+    border: white 3px;
+}
+
+#hilarious {
+    cursor: pointer;
+    font-weight: 900;
+    font-size: larger;
+    color: black;
+    transition: .5s;
+}
+
+#hilarious:hover {
+    cursor: pointer;
+    font-weight: 200;
+    font-size: small;
+    color: white;
+    transition-duration: .2s;
+}
+
+#hilarious:active {
+    cursor: pointer;
+    font-weight: 200;
+    font-size: small;
+    color: orange;
+    transition-duration: .2s;
+}
+
+hr+p {
+    color: pink;
+}
+
+footer>a {
+    text-decoration: line-through;
+}
+
+footer a {
+    text-decoration: overline;
+}
+
+input[type="text"] {
+    background-color: red;
+}
+
+input[type="radio"] {
+    width: 300px;
+}
+
+input[type="radio"]+button {
+    margin-right: 50px;
+}
+
+article.dingle {
+    background-color: violet;
+    max-width: 150px;
+}
+
+input[type="radio"]:checked+label {
+    color: red;
+}
