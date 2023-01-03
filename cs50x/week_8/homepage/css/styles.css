@@ -1,0 +1,111 @@
+.logo {
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 1rem;
+    margin-left: 2rem;
+    margin-right: 1rem;
+}
+
+.logo_wrap {
+    display: block;
+    background-color: hsla(24, 100%, 59%, .05);
+    border: white solid;
+    border-width: .1rem;
+    border-radius: .5rem;
+    padding: .75rem 0 .75rem 0;
+}
+
+
+#logo_middle_l,
+#logo_middle_r {
+    color: #FF822E;
+    font-size: 2rem;
+}
+
+.glow {
+    -webkit-animation: size 1s ease-in-out infinite alternate;
+    -moz-animation: size 1s ease-in-out infinite alternate;
+    animation: size 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes size {
+    from {
+        margin-left: 0rem;
+        margin-right: 0rem;
+    }
+
+    to {
+        margin-left: .3rem;
+        margin-right: .3rem;
+    }
+}
+
+.section {
+    color: white !important;
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+body {
+    /* Location of the image */
+    background-image: url(/images/Image1.jpeg);
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+    /* Background image doesn’t tile */
+    background-repeat: no-repeat;
+    /* Background image is fixed in the viewport so that it doesn’t move when the content’s height is greater than the image’s height */
+    background-attachment: fixed;
+    /* This is what makes the background image rescale based on the container’s size */
+    background-size: cover;
+    /* Set a background color that will be displayed while the background image is loading */
+    background-color: #464646;
+    height: 100%;
+}
+
+hr {
+    background-color: white;
+}
+
+.box {
+    position: relative;
+    top: 0rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box_middle {
+    display: inline-block;
+    text-align: center;
+}
+
+.heading {
+    font-weight: 900;
+    color: #FF822E;
+}
+
+.subheading {
+    font-weight: 200;
+}
+
+.square {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+}
+
+.wrapper {
+    background-color: hsla(0, 0%, 0%, .8);
+    padding: 5rem;
+    border: black solid;
+    border-width: .1rem;
+    border-radius: 1rem;
+}
+
+.separator {
+    margin-top: 1rem;
+    color: white;
+}
