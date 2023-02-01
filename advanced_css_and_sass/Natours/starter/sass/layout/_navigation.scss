@@ -1,0 +1,204 @@
+.navigation {
+  &__checkbox {
+    display: none;
+  }
+
+  // ANIMATION TRIGGERS
+  &__checkbox:checked ~ &__background {
+    transform: scale(100);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
+  }
+  // // // //
+
+  &__button {
+    background-color: $color-white;
+
+    // Give bigger value of h and w to make sure it covers the background (which has a gradient as bcg color)
+    height: 7rem;
+    width: 7rem;
+
+    position: fixed;
+
+    top: 6rem;
+    right: 6rem;
+
+    border-radius: 50%;
+
+    // z-index higher the the background one to be above
+    z-index: 2000;
+
+    box-shadow: 0 1rem 3rem rgba($color: $color-black, $alpha: 0.1);
+
+    text-align: center;
+
+    cursor: pointer;
+  }
+
+  // HAMBURGER ICON
+  &__icon {
+    position: relative;
+
+    margin-top: 3.5rem;
+
+    // Styling in order for these pseudo-elements to appear on the page
+    // // Display is set further down
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      // Pixels bcs we do not want this to change
+      height: 2px;
+
+      background-color: $color-gray-dark-3;
+
+      display: inline-block;
+    }
+
+    &::before {
+      top: -0.8rem;
+    }
+
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  // ANIMATIONS TRIGGER
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  // Rotate three quarters of half a circle for cooler animation
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+  // // // //
+
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient(
+      $color-primary-light,
+      $color-primary-dark
+    );
+
+    // Give high z-index value to make sure it is above everything else
+    z-index: 1000;
+
+    // Apply custom timing function (ease in, ease in out, etc.) using cubic bezier and values from: https://easings.net/#easeInOutQuint
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  &__nav {
+    height: 100vh;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1500;
+
+    opacity: 0;
+
+    // Width 0 to make this element not be selectable even though it is not appearing because of opacity: 0
+    width: 0;
+
+    transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  &__list {
+    // Parent is positioned (position: fixed), makes it possible for children to be absolute positioned
+    position: absolute;
+
+    // Call mixin
+    @include absolute-center;
+
+    list-style: none;
+
+    text-align: center;
+
+    // Specify width here to prevent bugs
+    // // If with is not specified, the element will not be removed from the page when the nav collapses
+    // // // Try setting the nav opacity to 1, removing this setting and clicking on the nav icon to see the behavior
+    width: 100%;
+  }
+
+  &__item {
+    margin: 2rem;
+  }
+
+  &__link {
+    transition: all 0.4s;
+
+    // NEcessary to make the animation where everything shifts to the right possible and the padding to be properly applied
+    // // Anchor elements are inline by default
+    display: inline-block;
+
+    &:link,
+    &:visited {
+      font-size: 3rem;
+      font-weight: 300;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      // More on the sides to make it look better
+      padding: 1rem 2rem;
+
+      // Use solid color background gradient to make the hover animation
+      // // Use a degree here to make to background fill itself with a tilted shape
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $color-white 50%
+      );
+
+      background-size: 250%;
+
+      span {
+        margin-right: 1.5rem;
+        display: inline-block;
+      }
+    }
+
+    &:hover,
+    &:active {
+      // Shift background so the white part cover entire size
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(1rem);
+    }
+  }
+}

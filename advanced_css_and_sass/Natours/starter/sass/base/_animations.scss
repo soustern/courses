@@ -1,0 +1,103 @@
+@keyframes moveInLeft {
+  /* We begin at 0%, before the animation actually start */
+  0% {
+    /* First, we want it to be invisible */
+    opacity: 0;
+
+    /* And be in this position, animating only in the x axis direction (hence the translateX option) */
+    /* This value used to be -100px, but we converted it to -10rem (Which is -100px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateX(-10rem);
+  }
+
+  /* We make a pit stop ar 80% completion */
+  80% {
+    /* A little movement will be made before the last keyframe */
+    /* This value used to be 10px, but we converted it to 1rem (Which is 10px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateX(1rem);
+  }
+
+  /* We finish at 100%, before the animation actually ends */
+  100% {
+    /* lastly, we want it to be fully visible again */
+    opacity: 1;
+
+    /* And be in this position, getting the element to an status of 0 "translation" (aka its correct place) */
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  /* We begin at 0%, before the animation actually start */
+  0% {
+    /* First, we want it to be invisible */
+    opacity: 0;
+
+    /* And be in this position, animating only in the x axis direction (hence the translateX option) */
+    /* This value used to be 100px, but we converted it to 10rem (Which is 100px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateX(10rem);
+  }
+
+  /* We make a pit stop ar 80% completion */
+  80% {
+    /* A little movement will be made before the last keyframe */
+    /* This value used to be -10px, but we converted it to -1rem (Which is -10px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateX(-1rem);
+  }
+
+  /* We finish at 100%, before the animation actually ends */
+  100% {
+    /* lastly, we want it to be fully visible again */
+    opacity: 1;
+
+    /* And be in this position, getting the element to an status of 0 "translation" (aka its correct place) */
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  /* We begin at 0%, before the animation actually start */
+  0% {
+    /* First, we want it to be invisible */
+    opacity: 0;
+
+    /* And be in this position, animating only in the x axis direction (hence the translateX option) */
+    /* This value used to be 60px, but we converted it to 6rem (Which is 60px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateY(6rem);
+  }
+
+  /* We finish at 100%, before the animation actually ends */
+  100% {
+    /* lastly, we want it to be fully visible again */
+    opacity: 1;
+
+    /* And be in this position, getting the element to an status of 0 "translation" (aka its correct place) */
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInUp {
+  /* We begin at 0%, before the animation actually start */
+  0% {
+    /* First, we want it to be invisible */
+    opacity: 0;
+
+    /* And be in this position, animating only in the x axis direction (hence the translateX option) */
+    /* This value used to be 60px, but we converted it to 6rem (Which is 60px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateY(-6rem);
+  }
+
+  /* We finish at 100%, before the animation actually ends */
+  100% {
+    /* lastly, we want it to be fully visible again */
+    opacity: 1;
+
+    /* And be in this position, getting the element to an status of 0 "translation" (aka its correct place) */
+    transform: translate(0);
+  }
+}

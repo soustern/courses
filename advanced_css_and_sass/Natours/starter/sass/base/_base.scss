@@ -1,0 +1,38 @@
+// UTILITIES
+
+// // All/Universal elements resetter
+
+* {
+  @extend %universal_reset;
+
+  &::after {
+    @extend %universal_reset;
+  }
+
+  &::before {
+    @extend %universal_reset;
+  }
+}
+
+// TWEAKS
+
+// // Change root font size
+
+html {
+  // This defines what 1rem is
+  // 62.5% of 16px -> 10px per rem
+  font-size: 62.5%;
+
+  scroll-behavior: smooth;
+
+  // Useful foe when there is a fixed element that could obstruct the top part of a section (such as a fixed header)
+  // No necessary in this case, but some of the section could be obstructed on height of a phone, for example
+  scroll-padding-top: 10rem;
+}
+
+// // Change body box-sizing
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+}

@@ -1,0 +1,78 @@
+// HORIZONTAL
+
+// // Define a row on the grid
+
+.row {
+  max-width: $grid-width;
+  margin: 0 auto 0 auto;
+
+  // Select all but the last child
+  &:not(:last-child) {
+    margin: 0 auto $gutter-vertical auto;
+  }
+
+  // Import clearfix mixin
+  @include clearfix;
+
+  // First row
+  .col-1-of-2 {
+    // Call mixin that defines the width of a column items
+    @include grid_item_width_calc(1, 2);
+
+    @extend %default_column;
+  }
+
+  // Second row
+  .col-1-of-3 {
+    @include grid_item_width_calc(2, 3);
+
+    @extend %default_column;
+  }
+
+  // Third row
+  .col-2-of-3 {
+    // We need to occupy everything but the space the first child is occupying
+    @include grid_item_width_calc(2, 3);
+
+    &:last-child {
+      width: calc(
+        2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal}
+      );
+    }
+
+    @extend %default_column;
+  }
+
+  // Fourth row
+  .col-1-of-4 {
+    @include grid_item_width_calc(3, 4);
+
+    @extend %default_column;
+  }
+
+  // Fifth row
+  .col-2-of-4 {
+    @include grid_item_width_calc(3, 4);
+
+    &:last-child {
+      width: calc(
+        2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal}
+      );
+    }
+
+    @extend %default_column;
+  }
+
+  // Sixth row
+  .col-3-of-4 {
+    @include grid_item_width_calc(3, 4);
+
+    &:last-child {
+      width: calc(
+        3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal} * 2
+      );
+    }
+
+    @extend %default_column;
+  }
+}

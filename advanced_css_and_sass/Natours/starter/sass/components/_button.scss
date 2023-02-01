@@ -1,0 +1,129 @@
+// MAIN BUTTONS
+
+// // Default button link | visited | hover/after | active | after | white/after | animated
+
+.btn {
+  // Button default styles must be extended here as well because
+  // // this is for <button> elements, they do not have th states bellow
+  // // // Buttons HTML element does not have a :link or :visited
+  @extend %default_button;
+
+  // STATES
+
+  &:link {
+    @extend %default_button;
+  }
+
+  &:visited {
+    @extend %default_button;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  //  Add focus here as well to to apply the same style for <button> HTML element
+  // // Focus should never be completely eliminated because of accessibility reasons
+  &:focus,
+  &:active {
+    transform: translateY(-0.1rem);
+
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.3);
+  }
+
+  &::after {
+    content: "";
+
+    display: inline-block;
+
+    height: 100%;
+    width: 100%;
+
+    border-radius: 10rem;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: -1;
+
+    transition: all 0.4s;
+  }
+
+  // MODIFIERS
+
+  // // Color
+
+  &--white {
+    background-color: $color-white;
+    color: $color-gray-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &--green {
+    background-color: $color-primary-light;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary-light;
+    }
+  }
+
+  // // Animation
+
+  &--animated {
+    animation: moveInBottom 0.35s ease-out 0.75s;
+
+    animation-fill-mode: backwards;
+  }
+}
+
+// MISC BUTTONS
+
+// // No background color button
+
+.btn-text {
+  &:link {
+    color: $color-primary-dark;
+    font-size: $default-font-size;
+
+    // This is originally inline, we make it inline-block to be able to use block properties, such as padding and margin up/down
+    display: inline-block;
+
+    text-decoration: none;
+
+    // Pixels here bcs value to small to be changed by user
+    border-bottom: 0.8px solid $color-primary-dark;
+    padding: 5px;
+
+    transition: all 0.2s;
+  }
+
+  &:visited {
+    color: $color-primary-dark;
+  }
+
+  &:hover {
+    color: white;
+    border-bottom: 2px solid $color-primary;
+    background-color: $color-primary;
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0.1rem 1.5rem rgba($color: $color-black, $alpha: 0.2);
+  }
+
+  &:active {
+    transform: translateY(-0.1rem);
+
+    box-shadow: 0 0.2rem 0.5rem rgba($color-black, 0.25);
+  }
+}

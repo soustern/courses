@@ -1,0 +1,56 @@
+// // // // // // // // // // // // // // // // !!!IMPORTANT!!! All CSS comments have been moved to ../css/styles_LEGACY.css
+// // // // // // // // // // // // // // // // // !!!IMPORTANT!!! All SASS comments have been moved to https://odepen.io/soustern
+
+// IMPORTS
+// Path and filename expl.: https://www.udemy.com/course/advanced-css-and-sass/learn/lecture/8274478#content
+
+// // Base (This need to go first)
+
+@import "base/base"; // // // Base CSS code such as resets and html, body selectors tweaks
+
+// // Abstracts (These need to go second)
+
+@import "abstracts/variables"; // // // All functions
+
+@import "abstracts/functions"; // // // All functions
+
+@import "abstracts/mixins"; // // // All functions
+
+@import "abstracts/extends"; // // // All extends
+
+// // Base
+
+@import "base/animations"; // // // All animations
+
+@import "base/typography"; // // // All typography settings
+
+@import "base/utilities"; // // // All utility code
+
+// // Layout
+
+@import "layout/header"; // // // Header section
+
+@import "layout/grid"; // // // All grid settings
+
+@import "layout/footer";
+
+@import "layout/navigation";
+
+// // Components
+
+@import "components/button"; // // // Default button
+@import "components/composition"; // // // Photo composition
+@import "components/feature-box"; // // // Feature box with text and icon
+@import "components/card"; // // // Complex card
+@import "components/story"; // // // Testimonies styling
+@import "components/bg-video"; // // // Default styling and formatting for videos used as background
+@import "components/form"; // // // DEfault form styling
+@import "components/popup";
+
+// // Pages
+
+@import "pages/homepage"; // // // Homepage/Landing Page
+
+// // Themes
+
+// // Vendors

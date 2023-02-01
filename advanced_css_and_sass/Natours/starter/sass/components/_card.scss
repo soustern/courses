@@ -1,0 +1,245 @@
+.card {
+  // To make it look like the card is rotating to reveal its back content
+  // // We need to set a perspective value in the parent element so we can manipulate the children
+  // // // There is a need for a huge number of pixel, unchangeable so no rem
+  // // // // Try to set a small quantity of pixels to see why
+  // // // // // The lower the value, the more "dramatic" the perspective is
+  // // // // To make this work in mozilla firefox as well, we must use the -moz- suffix
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+
+  // Allow children absolute positioning
+  position: relative;
+
+  // Height must be specified since the children have the position: absolute property
+  // // If we do not do this, the height becomes 0, making it impossible to achieve the "perspective rotation" of the card
+  // // // There is not clear fix for absolute positioned children, unlike with floats, so it must be done this way:
+  height: 53rem;
+
+  &__side {
+    height: 53rem;
+
+    border-radius: 3px;
+
+    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
+
+    // Specify transition timing function as well
+    // // Do it with shorthand
+    transition: all 0.8s ease;
+
+    // Both the sides of the cards must be on top of each other
+    // // Absolute positioned objects are taken out from the normal flow
+    // // // This causes the parent height to collapse, becoming 0
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    // Must set width because, the objects will have the width of their text otherwise
+    width: 100%;
+
+    // Necessary property that makes the, when rotated and visible, backside of the element simply disappear, showing whats behind
+    // // IMPORTANT IMPORTANT IMPORTANT IMPORTANT IMPORTANT IMPORTANT
+    backface-visibility: hidden;
+
+    // Necessary property to make sure the image added above does not overflow its parent element, preserving, that way, its border radius
+    overflow: hidden;
+
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      // Before the hovering happens, the back side of the card is naturally rotated 180 from the point of view, hence it is in the back
+      transform: rotateY(180deg);
+
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+    }
+  }
+
+  // Here, we are saying that we want an specific children to be affected when the parent is hovered
+  &:hover &__side--front {
+    // Front side must rotate to show back (other side) of card
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    // If the back side begins rotated at 180deg, it must go back to 0deg on hover
+    transform: rotateY(0);
+  }
+
+  // FRONT SIDE STYLING
+
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+
+    // Set blend mode that will define the gradient above the images
+    background-blend-mode: screen;
+
+    // Webkit version needed to be usable on other browsers
+    // // Webkit version needs to go first
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    // Clip thew image bottom
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &--1 {
+      // Path goes back only one level because this file will be latter on compiled as another archive on another folder
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+
+    &--2 {
+      // Path goes back only one level because this file will be latter on compiled as another archive on another folder
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
+    }
+
+    &--3 {
+      // Path goes back only one level because this file will be latter on compiled as another archive on another folder
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
+    }
+  }
+
+  &__heading {
+    font-size: 3.3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: $color-white;
+    position: absolute;
+    top: 12rem;
+    right: 3rem;
+
+    text-align: right;
+
+    // Make it narrower to achieve line break
+    // // Being a block element, the width begins at 100%
+    width: 71%;
+  }
+
+  &__heading-span {
+    // Padding necessary to achieve line break
+    padding: 1rem 1.5rem;
+
+    // The text eas separated due to a line break
+    // // To treat both texts in each side of the line break, we must use the following property
+    // // // The value must be clone
+    // // // Webkit first
+    // // // // Try commenting these out to see what happen with the padding of the span
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+
+    ul {
+      list-style: none;
+
+      // Necessary to the underline to no occupy 100% card width
+      width: 80%;
+
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:first-child {
+          margin-top: 1rem;
+        }
+
+        &:not(:last-child) {
+          border-bottom: 1.5px solid $color-gray-light;
+        }
+      }
+    }
+  }
+
+  // BACK SIDE STYLING
+
+  &__cta {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+  }
+
+  &__price-box {
+    text-align: center;
+    color: $color-white;
+    margin-bottom: 6rem;
+  }
+
+  &__price-only {
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+
+  &__price-value {
+    margin-top: 1rem;
+    font-size: 10rem;
+    font-weight: 100;
+  }
+}

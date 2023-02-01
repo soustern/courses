@@ -1,0 +1,470 @@
+/* Use * universal selector (This means all elements of the document are being selected at once) to set some properties */
+/* We must account fot pseudo classes and pseudo elements as well (only after and before) so that not only the "original" elements */
+/* Get the behavior being defined inside the selector */
+/* This prevents any strange behavior happening */
+*,
+*::after,
+*::before {
+  /* * Is the universal selector, which selects all others */
+  margin: 0;
+  padding: 0;
+
+  /* Since the * selector selects and apply properties and values to every other selector in this document, we can do the following */
+  /* We defined inside the "body" selector, the parent of all other selectors in this document, that the box-sizing property must be border-box */
+  /* This means thar, when selecting everything here, we can set all of the other elements box-size: inherit; */
+  /* Which will make it so everything inherit the value from its parent, which is the body selector */
+  /* Meaning that everything inherits and apply box-size: border-box */
+  /* This is considered best practice because it makes it easier to change values if needed, leading to a more maintainable and scalable code */
+  box-sizing: inherit;
+}
+
+/* Now, we will use the " " element selector to change the root font-size of the document */
+html {
+  /* Next up, we are overwriting the "default" root font size of 16px (provided by the browser) with an author implemented one */
+  /* We do this to better control the usage of "rem" metric units later on */
+  /* Now we know 1 rem is equal to 10px */
+  /* However, setting a root font size with pixels makes it impossible for the user to use a custom value on the browser, many times to account for bad sight */
+  /* So we will use percentage here, which will produce a number from the percentage of the font size given by the browser, almost like as if it is the parent of this element */
+  /* The default font size given by browsers, if the user does not change anything, is 16px. That the situation we are counting on */
+  /* So, to assure our computed value is 10px in this scenario, we make 10/16 */
+  /* Which gives us the amount of 0.625 or 62.5% */
+  font-size: 62.5%;
+}
+
+body {
+  /* Define font specifications here because the body element is the parent of all other elements, make it possible for them to inherit these configurations */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+
+  /* Since we changed the root font size of the page (using the "html" element selector), we must reset it here to 16 px (1.6rem, since 1rem = 10px) */
+  /* This is necessary to make the default size of all fonts (text) in this page conform to browser standard, which is also 16px */
+  font-size: 1.6rem;
+
+  line-height: 1.7;
+  color: #777;
+
+  /* Since body is the parent element for all other elements (* selects each element, it is not a sel sustained element) */
+  /* Adding a padding here will make it so a white space is added around all children element equally */
+  /* This value used to be 30px, but we converted it to 3rem (Which is 30px because the root font-size is 10px) fot easier responsive conversion later on */
+  /* This practice ensures a better maintainable and scalable code */
+  padding: 3rem;
+
+  /* Border box makes it so the height and width of an element does not have its valor summed up with padding and margin */
+  /* It actually reduces content area to fit m and p values. */
+  /* This assures that a set height of 100px will always have that value, disregarding a padding of 50px for example */
+  /* With content box setting, the previous example would amount to a height of 150px, because it would get the value of height(100) + padding(50) */
+  /* The same applies to any margin */
+  box-sizing: border-box;
+}
+
+.header {
+  /* Specify an area that will always leave 95% of the total viewport (look up the difference between vh and percentage)  */
+  height: 95vh;
+
+  /* Set position to relative so we can use this element as an reference to begin counting from at child elements */
+  position: relative;
+
+  /* To add the green gradient above the mountain picture, we must use a background image once again */
+  /* Since we already have one here, theres no point having another "background-image" further bellow */
+  /* To make it so the gradient comes on top, we must insert it before the picture */
+  /* To separate them, comma is used */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(128, 214, 113, 0.802),
+      rgba(39, 180, 133, 0.799)
+    ),
+    url(../img/hero.jpg);
+
+  /* Makes it so the background image always cover its parent width and height, preventing it from being duplicated  */
+  background-size: cover;
+
+  /* Makes it so the browser never crops the top center of the image, cropping, instead, the sides and bottom *equally* */
+  background-position: top;
+
+  /* Add the element that will responsible for clipping the background image, which otherwise is a simple rectangle */
+  /* Using this, we are able to give the image that "diagonal line" which dictates where it ends at the bottom */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  border-radius: 1.5rem 1.5rem 0rem 0rem;
+}
+
+.header__logo-box {
+  /* Set position to absolute to ensure that the this div is consistent is its positioning */
+  position: absolute;
+
+  /* Since the parent from this element (.header) has the position: relative attribute, the browser knows from where to begin counting the top and left values */
+  /* If the parent element did not have a relative position, the values would begin count from the white margin we want to have around everything */
+  /* Meaning, literally, the edge of the screen */
+  /* These values used to be 40px each, but we converted it to 4rem (Which is 40px because the root font-size is 10px) fot easier responsive conversion later on */
+  /* This practice ensures a better maintainable and scalable code */
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  /* If we only add height (or width) value to an element, its counterpart will be figured out by the browser */
+  /* In this case, the browser automatically sets a width, it could the contrary, too */
+  /* This value used to be 60px, but we converted it to 6rem (Which is 60px because the root font-size is 10px) fot easier responsive conversion later on */
+  /* This practice ensures a better maintainable and scalable code */
+  height: 6rem;
+}
+
+.header__text-box {
+  /* Set position to absolute to ensure that the this div is consistent is its positioning */
+  position: absolute;
+
+  /* Since the parent from this element (.header) has the position: relative attribute, the browser knows from where to begin counting the top and left values */
+  /* If the parent element did not have a relative position, the values would begin count from the white margin we want to have around everything */
+  /* Meaning, literally, the edge of the screen */
+  /* Top must be 40% to account for the asymmetric header geometry and make it this element look like it is in the middle */
+  /* This is for the parent of this element */
+  top: 40%;
+  left: 50%;
+
+  /* We use the transform properties here to make sure this box and the text within are positioned exactly where we want */
+  /* We translate it to -50% on the x and y axis */
+  /* This means the element is shifted -50% of its own height to the top and -50% of its own width to the left */
+  /* THis is for the element itself */
+  transform: translate(-50%, -50%);
+
+  /* Now, we will add property that will center all inline, inline-block children elements */
+  text-align: center;
+}
+
+.heading-primary {
+  color: white;
+  text-transform: uppercase;
+
+  /* The next property will be added to make sure no shakiness happens later on at the animations */
+  backface-visibility: hidden;
+
+  /* Add some margin-bottom here to have some space between the two h1 ant the button (aka "a" in markup) */
+  /* This value used to be 60px, but we converted it to 6rem (Which is 60px because the root font-size is 10px) fot easier responsive conversion later on */
+  /* This practice ensures a better maintainable and scalable code */
+  margin-bottom: 6rem;
+}
+
+.heading-primary--main {
+  /* Display block is used because span elements are naturally inline, but we want the span text to be one above the other */
+  /* This makes it so a line break (of sorts) appears between the, you guessed it, lines */
+  display: block;
+
+  /* This value used to be 90px, but we converted it to 9rem (Which is 60px because the root font-size is 10px) fot easier responsive conversion later on */
+  /* This practice ensures a better maintainable and scalable code */
+  font-size: 9rem;
+
+  font-weight: 400;
+
+  /* This value used to be 60px, but we converted it to 6rem (Which is 60px because the root font-size is 10px) fot easier responsive conversion later on */
+  /* This practice ensures a better maintainable and scalable code */
+  letter-spacing: 6rem;
+
+  /* Text ident is necessary here to resolve the strange behavior where this specific span of h1 was not being centered correctly by "text-align: center" */
+  /* With this. we force the element a little bit to the right */
+  /* Hover the mouse over the property to know more */
+  /* This value used to be 50px, but we converted it to 5rem (Which is 50px because the root font-size is 10px) fot easier responsive conversion later on */
+  /* This practice ensures a better maintainable and scalable code */
+  text-indent: 5rem;
+
+  /* Now, we are going to apply an animation to this element */
+  /* For this, we will need two properties */
+
+  /* The name of the animation, which we have later in the code */
+  animation-name: moveInLeft;
+
+  /* And the animation duration, which is self-explanatory */
+  animation-duration: 1s;
+
+  /* We can also set a delay, this way the animation wont begin happening right away */
+  /* Only after the time set at the delay passes */
+  /* animation-delay: 3s; */
+
+  /* Other trick we have up on our sleeves is the animation count */
+  /* This property will set an amount of times a animation will happen */
+  /* animation-iteration-count: 10; */
+
+  /* And, lastly, we have animation timing function */
+  /* This will specify how fast or how slow the parameters specified at the animation conception will happen */
+  /* Like ease in and ease out of video editing software (premiere, after effects) */
+  /* animation-timing-function: ease-in; */
+
+  /* It is possible to add all the tweaks mentioned above with shorthand properties, as seen below */
+  /* animation: moveInLeft 1s ease-out; */
+}
+
+.heading-primary--sub {
+  /* Display block is used because span elements are naturally inline, but we want the span text to be one above the other */
+  /* This makes it so a line break (of sorts) appears between the, you guessed it, lines */
+  display: block;
+
+  /* This value used to be 50px, but we converted it to 5rem (Which is 50px because the root font-size is 10px) fot easier responsive conversion later on */
+  /* This practice ensures a better maintainable and scalable code */
+  font-size: 5rem;
+
+  font-weight: 400;
+
+  /* This value used to be 17.4px, but we converted it to 1.74rem (Which is 17.4px because the root font-size is 10px) fot easier responsive conversion later on */
+  /* This practice ensures a better maintainable and scalable code */
+  letter-spacing: 1.74rem;
+
+  /* Now, we are going to apply an animation to this element */
+  /* For this, we will need two properties */
+
+  /* The name of the animation, which we have later in the code */
+  animation-name: moveInRight;
+
+  /* And the animation duration, which is self-explanatory */
+  animation-duration: 1s;
+}
+
+/* :link is a pseudoclass and pseudoclasses are a special state of a selector */
+/* Here, we are treating our anchor element as an link also in the visited state (after clicking on it) */
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+
+  /* Here we will add the "rounded corners", characteristic of buttons */
+  border-radius: 10rem;
+
+  /* Take out the decoration and appearance that is given to links by browser by default */
+  text-decoration: none;
+
+  /* Here, we are using a shorthand selector to give custom padding values to the different sides of the element */
+  /* The first values is that of top and bottom, the second, left and right. So: top, bottom: 15px AND left, right: 40px */
+  padding: 1.5rem 4rem;
+
+  /* We must make this element have an inline-block display */
+  /* This is necessary because, otherwise, the value of padding would "overflow" and go above the h1 present at the header */
+  /* At 15px, it does not happen, but try making it more than 30px without making it inline-block... (!!!) */
+  /* When working with padding, it is always necessary to make said element inline-block */
+
+  /* XXXXXXXXXXXXXXXXXXXX An inline-block element is treated as if it is text XXXXXXXXXXXXXXXXXXX*/
+  /* Thats we this can be centered with text-align: center, as implemented high above in the ".text-area" class */
+  display: inline-block;
+
+  /* Next up, we will animate this button in a different manner, using the "transition" property */
+  /* The shorthand version of the property will be used */
+  /* Hover over the property selected value for more information about what is happening */
+  /* This property is adding a smooth and continued motion to the .btn:hover and .btn:active happening */
+  /* Before, the element would just teleport abruptly to a new location in accordance with what is present at :hover and :active */
+  /* With transition set to all, everything that was touched on those selectors is subject to a smooth transition (aka "automatic" keyframe animation) spanning .2s */
+  /* As seen in the shorthand */
+
+  /* THE TRANSITION PROPERTY MUST ALWAYS BE IMPLEMENTED AT THE INITIAL STATE OF AN ELEMENT (AKA NOT :HOVER AND ETC.) */
+  /* IN THIS CASE, IT IS ADDED IN A SELECTOR WHERE NO USER MOTION IS BEING "COLLECTED" */
+  transition: all 0.2s;
+
+  /* Here we must set the position to relative so this element can serve as an reference position for positioning the "after" element coming later */
+  position: relative;
+
+  font-size: 2rem;
+  /* font-size: 16px; */
+}
+
+/* Now we will select ".btn" when in its hover state */
+.btn:hover {
+  /* When hovered, the property "transform" will happen */
+  /* We want it to move up, translateY to access the Y axis */
+  /* In css, the Y axis moves from top to bottom, so we need a negative value to make the element move up */
+  transform: translateY(-0.3rem);
+
+  /* Next on, we will add shadow with an offset at the Y axis, so the shorthand form goes: */
+  /* This is making it so the shadow is 10px down */
+  /* the shorthand is: x, y, blur and color (rgba has a selector for opacity after the blue value) */
+  /* We use these values of blur and offset to make the shadow look bigger and the button further away from the page, closer to the user */
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+/* Now we will select ".btn" when in its "clicked" state (which is named "active") */
+.btn:active {
+  /* The usage of translateY is interesting */
+  /* The element is transforming not using the previous hover state as reference but the "native" one, this makes it so a value of -1px makes appear to go down */
+  /* This happens because the element assumes the position of -3px at the Y axis because of the previous :hover implementation */
+  /* So, when clicked, it assumes the position of -1px at the Y axis, a little above its "static" or "native" state (that would be 0) */
+  transform: translateY(-0.1rem);
+
+  /* When clicked, the button shadow will have its blur reduced */
+  /* We do this to make the shadow look smaller and the button closer to the page, further away from the user */
+  /* We also make the opacity more visible by adding .1 point to the value of "a" at "rgba" */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+
+/* Next up, we are going to define a class that has the sole function of applying a certain animation to an element */
+/* If any element has this class "attached" to it, it will be susceptible to the specific animation being called here */
+.btn--animated {
+  /* Here, the animation and its specifications will be defined using a shorthand */
+  /* the shorthand goes: animation-name, animation-duration, animation-timing-function and animation-delay */
+  /* We also need a delay, because this animation must happen after (or in the middle, just not at the same time) the "heading (h1) animation" */
+  /* ease-out mut be used to make the animation "come in" more smooth */
+  animation: moveInBottom 0.35s ease-out 0.75s;
+
+  /* Next, we must use animation-fill-mode to assure that the button is not visible on refresh */
+  /* Try disabling this property and looking at the button after a page refresh to see the difference */
+  /* A value of "backwards" will apply what is specified at the "0%" step of this specific animation, exactly the moment where the button is "down" and with 0 opacity */
+  animation-fill-mode: backwards;
+}
+
+/* The next pseudo element to be use is one that makes it possible to style a "virtual element" */
+/* Making it some sort of copy of the original one to be used */
+/* It is crucial that we give the "after" element the same properties and specifications of the original one */
+
+.btn::after {
+  /* One pre-requisite for a "after" element to be rendered on the page is specifying its content property */
+  /* It does not matter what is the content property set to, it can even be empty, but it must exist for and "after" element to appear */
+  content: "";
+
+  /* We must also define a display property for the same reason as above */
+  /* Here we will set display to inline-block so to mimic the fact that the original button is one */
+  display: inline-block;
+
+  /* Here, we can set width and height to 100% because the "after" element is treated like a child of the original one */
+  /* Because of this, setting those properties to 100% will make it look the same as the original (having the exact same dimensions) */
+  height: 100%;
+  width: 100%;
+
+  border-radius: 10rem;
+
+  /* Now, we will use absolute positioning to make sure this "after" element is positioned behind the original one */
+  /* If we do not do this, the button will appear to have double the size because of the "element stacking" being caused by display: inline-block */
+  /* To achieve this, we will make its position property absolute and the top and left values 0, this way it will be centered */
+
+  /* Absolute positioning needs a reference point for defining its value of top, bottom, left and right */
+  /* It will do this by identifying the first "relative positioned" element it can */
+  /* If we do not add the position: property to the original button, it will  all of the ".text-area" element */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* Now, we will tweak its Z-index to actually guarantee this element is positioned behind the original one */
+  /* For it to go behind, the minimum required values is -1 */
+  z-index: -1;
+
+  /* Next up, we will animate this button in a different manner, using the "transition" property */
+  /* The shorthand version of the property will be used */
+  /* Hover over the property selected value for more information about what is happening */
+  /* This property is adding a smooth and continued motion to the .btn:hover and .btn:active happening */
+  /* Before, the element would just teleport abruptly to a new location in accordance with what is present at :hover and :active */
+  /* With transition set to all, everything that was touched on those selectors is subject to a smooth transition (aka "automatic" keyframe animation) spanning .2s */
+  /* As seen in the shorthand */
+
+  /* THE TRANSITION PROPERTY MUST ALWAYS BE IMPLEMENTED AT THE INITIAL STATE OF AN ELEMENT (AKA NOT :HOVER AND ETC.) */
+  /* IN THIS CASE, IT IS ADDED IN A SELECTOR WHERE NO USER MOTION IS BEING "COLLECTED" */
+  transition: all 0.4s;
+}
+
+/* Now we will make a "after copy" of the class responsible of making a button white */
+.btn--white::after {
+  background-color: #fff;
+}
+
+/* Now, we must add a stance where the "after" element has its style changed whilst "mouse hovering" is happening */
+.btn:hover::after {
+  /* We want to tweak here in a way that the desired effect of "glow and fade out" is achieved */
+
+  /* First, we must tweak the transform property using the "scale" option */
+  /* Scale, without specifying values for X or Y, simply scales everything */
+  /* SO, to control both of the axis, we must use two values, scaleX and scale Y */
+  /* Giving the Y axis a bigger value of scaling makes the motion look more uniform */
+  transform: scaleX(1.4) scaleY(1.6);
+
+  /* Second, we must make it so the opacity goes to 0, to achieve the "fade out" effect */
+  opacity: 0;
+}
+
+/* Animation space bellow XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+/* Now we will add the page refresh animations */
+/* We must invoke the @keyframes incantation and give it a name! (also known as identifier) */
+/* Because of performance issues, it is the best to only ever animate two properties */
+/* Browsers are optimized for only the opacity and transform properties */
+@keyframes moveInLeft {
+  /* We begin at 0%, before the animation actually start */
+  0% {
+    /* First, we want it to be invisible */
+    opacity: 0;
+
+    /* And be in this position, animating only in the x axis direction (hence the translateX option) */
+    /* This value used to be -100px, but we converted it to -10rem (Which is -100px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateX(-10rem);
+  }
+
+  /* We make a pit stop ar 80% completion */
+  80% {
+    /* A little movement will be made before the last keyframe */
+    /* This value used to be 10px, but we converted it to 1rem (Which is 10px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateX(1rem);
+  }
+
+  /* We finish at 100%, before the animation actually ends */
+  100% {
+    /* lastly, we want it to be fully visible again */
+    opacity: 1;
+
+    /* And be in this position, getting the element to an status of 0 "translation" (aka its correct place) */
+    transform: translate(0);
+  }
+}
+
+/* Now we will add the page refresh animations */
+/* We must invoke the @keyframes incantation and give it a name! (also known as identifier) */
+/* Because of performance issues, it is the best to only ever animate two properties */
+/* Browsers are optimized for only the opacity and transform properties */
+@keyframes moveInRight {
+  /* We begin at 0%, before the animation actually start */
+  0% {
+    /* First, we want it to be invisible */
+    opacity: 0;
+
+    /* And be in this position, animating only in the x axis direction (hence the translateX option) */
+    /* This value used to be 100px, but we converted it to 10rem (Which is 100px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateX(10rem);
+  }
+
+  /* We make a pit stop ar 80% completion */
+  80% {
+    /* A little movement will be made before the last keyframe */
+    /* This value used to be -10px, but we converted it to -1rem (Which is -10px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateX(-1rem);
+  }
+
+  /* We finish at 100%, before the animation actually ends */
+  100% {
+    /* lastly, we want it to be fully visible again */
+    opacity: 1;
+
+    /* And be in this position, getting the element to an status of 0 "translation" (aka its correct place) */
+    transform: translate(0);
+  }
+}
+
+/* Here we will define the animation that makes it so the "discover outer tours" button move in from the bottom */
+@keyframes moveInBottom {
+  /* We begin at 0%, before the animation actually start */
+  0% {
+    /* First, we want it to be invisible */
+    opacity: 0;
+
+    /* And be in this position, animating only in the x axis direction (hence the translateX option) */
+    /* This value used to be 60px, but we converted it to 6rem (Which is 60px because the root font-size is 10px) fot easier responsive conversion later on */
+    /* This practice ensures a better maintainable and scalable code */
+    transform: translateY(6rem);
+  }
+
+  /* We finish at 100%, before the animation actually ends */
+  100% {
+    /* lastly, we want it to be fully visible again */
+    opacity: 1;
+
+    /* And be in this position, getting the element to an status of 0 "translation" (aka its correct place) */
+    transform: translate(0);
+  }
+}

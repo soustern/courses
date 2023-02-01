@@ -1,0 +1,65 @@
+// UTILITIES
+
+// // Clearfix
+
+// // // Clearfix for floated children elements
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+// GRID
+
+// // Grid styling
+
+// // // Grid item width cal
+
+@mixin grid_item_width_calc(
+  $multiply: 1,
+  $divide: 1,
+  $gutter-size: $gutter-horizontal
+) {
+  // The function calc() is native from CSS and is able to make a mathematical calculation with multiple/different/mixed metric units
+  // // To make a SASS variable work in this function, we must have it inside the #{} syntax
+  width: calc((100% - (#{$gutter-size} * #{$multiply})) / #{$divide});
+}
+
+// SETTINGS
+
+// // Default background image style
+
+@mixin default_bcg_img_style($image-name, $bcg-position: top) {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/#{$image-name}.jpg);
+
+  background-size: cover;
+
+  background-position: $bcg-position;
+}
+
+// LAYOUT SETTINGS
+
+// // Default section bcg (no bcg image)
+
+@mixin default_section_style($margin-top: 0, $bcg-color: $color-bkg-about) {
+  background-color: $bcg-color;
+
+  // Make this sections go "behind" the clip path at the header
+  // Negative margin top value makes the block go up
+  margin: $margin-top 0 0 0;
+}
+
+// // Center absolute positioned elements on the middle of the screen
+@mixin absolute-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

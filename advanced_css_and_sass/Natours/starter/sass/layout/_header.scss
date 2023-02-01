@@ -1,0 +1,37 @@
+.header {
+  height: 95vh;
+
+  position: relative;
+
+  @include default_bcg_img_style(hero);
+
+  // Webkit version needed to be usable on other browsers
+  // // Webkit version needs to go first
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  border-radius: 1.5rem 1.5rem 0rem 0rem;
+
+  &__logo-box {
+    position: absolute;
+
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 6rem;
+  }
+
+  &__text-box {
+    position: absolute;
+
+    top: 45%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+  }
+}

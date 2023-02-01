@@ -1,0 +1,70 @@
+.footer {
+  background-color: $color-gray-dark-3;
+  padding: 10rem 0;
+  font-size: 1.5rem;
+
+  border-radius: 0 0 1.5rem 1.5rem;
+
+  // Set for inheritance of font color
+  color: $color-gray-light;
+
+  &__logo-box {
+    // Inline image behave just like text
+    text-align: center;
+    margin-bottom: 8rem;
+  }
+
+  &__logo {
+    width: 15rem;
+    height: auto;
+  }
+
+  &__navigation {
+    border-top: 1px solid $color-gray-dark;
+    padding-top: 2rem;
+
+    // Inline block here so the margin does not occupy 100% of width
+    display: inline-block;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 1.8rem;
+    }
+  }
+
+  &__link {
+    transition: all 0.2s;
+    background-color: $color-gray-dark-3;
+
+    &:link,
+    &:visited {
+      color: $color-gray-light;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    &:hover,
+    &:active {
+      color: $color-primary;
+      box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.4);
+      transform: rotate(5deg) scale(1.3);
+    }
+  }
+
+  &__copyright {
+    border-top: 1px solid $color-gray-dark;
+    padding-top: 2rem;
+
+    // Setting for symmetries with logo
+    width: 80%;
+    float: right;
+  }
+}

@@ -1,0 +1,99 @@
+// SECTIONS
+
+// // About section
+
+.section-about {
+  // Call default section (no bcg img) settings
+  @include default_section_style(-20vh);
+
+  padding: 35rem 0;
+}
+
+.section-features {
+  padding: 20rem 0;
+
+  // Call mixin so set default bcg image settings
+  // // image-name, bcg-position
+  @include default_bcg_img_style(nat-4);
+
+  // Use skewY here to simulate a clip path, but more simple (Tilt the section)
+  // // Skew always degree (deg) value
+  // // // We will, then, skew the feature-boxes inside in the opposite direction so they are no tilted with the background
+  transform: skewY(-7deg);
+
+  // Select direct child to Skew the feature-boxes inside in the opposite direction so they are no tilted with the background
+  // // The selector bellow translates to .section-feature > * in css
+  // // // It means we are selecting all children of the "section-features" element, but only the direct ones, not children of the children
+  // // // // To select All children the selector would have to be: .section-feature * (without smaller than ( > ))
+  & > * {
+    transform: skewY(7deg);
+  }
+
+  // Sen this section upp to go "over" the section above
+  margin-top: -11.5vh;
+}
+
+.section-tours {
+  // Call default section (no bcg img) settings
+  @include default_section_style(-11.5vh);
+
+  padding: 35rem 0 18rem 0;
+}
+
+.section-stories {
+  // Call default section (no bcg img) settings
+  @include default_section_style(-11.5vh, 0);
+
+  padding: 15rem 0;
+
+  // Necessary for positioning of position: absolute children
+  position: relative;
+}
+
+.section-booking {
+  padding: 15rem 0;
+
+  background-image: linear-gradient(
+    to right bottom,
+    $color-primary,
+    $color-primary-dark
+  );
+}
+
+.book {
+  // Apply the "solid color gradient" technique
+  background-image: linear-gradient(
+      105deg,
+      rgba($color-white, 0.9) 0%,
+      rgba($color-white, 0.9) 50%,
+      transparent 50%
+    ),
+    url(../img/nat-10.jpg);
+
+  // The value of all border radios in the project should have been defined by a variable
+  border-radius: 3px;
+
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+
+  // Cover sets this value to 100%, but it could anything really (25%, 50%, 150%)
+  background-size: cover;
+
+  background-position: top;
+
+  // ANOTHER WAY OF ACHIEVING THE SAME EFFECT AS IN "SOLID COLOR GRADIENT" TECHNIQUE
+  // &::after {
+  //   content: "";
+  //   display: block;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-color: white;
+  //   clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%);
+
+  //   opacity: 0.9;
+  // }
+
+  &__form {
+    width: 50%;
+    padding: 6rem;
+  }
+}

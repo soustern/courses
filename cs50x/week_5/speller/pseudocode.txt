@@ -1,0 +1,39 @@
+Global Variables ---------------------------------------------------------
+- Create a global variable to count the amount of words 💯️
+
+Load Function ---------------------------------------------------------
+- Create a buffer and alloc memory to it 💯️
+	- Check if no error 💯️
+- Create a node and start it to NULL 💯️
+- Create a index variable 💯️
+- Open the dictionary file 💯️
+- Write each string in the file onto the buffer 💯️
+	- Create a while loop 💯️
+		- Condition: until fscanf returns EOF 💯️
+	- For each passage 💯️
+		- Node receives a new memory allocation 💯️
+			- Check if no error 💯️
+		- node->word receives the content of buffer 💯️
+		- hash_index receives the value of hash(storage) function 💯️
+		- Check if table[hash_index] is pointing to NULL💯️
+			- If so💯️
+				- n->next = NULL💯️
+				- table[hash_index] = n💯️
+			- If not 💯️
+				- n->next = table[hash_index]💯️
+				- table[hash_index] = n->next💯️
+
+Hash Function ---------------------------------------------------------
+- Return a index value based of the string passed 💯️
+	- Create index variable 💯️
+- Make sure the returned index is dows not have a value bigger then 1000 💯️
+
+Check Function ---------------------------------------------------------
+- Create a index variable💯️
+	- INdex variable receives the returned value of the hash(word) func💯️
+- For loop for the array positions at table pointer array💯️
+	- While loop for the linked list at each array position💯️
+		- at each iteration, check if the argument received in the function is equal to value at that
+		position💯️
+			- If so, return true💯️
+	- Return false💯️

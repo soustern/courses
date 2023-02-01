@@ -1,0 +1,13 @@
+// CALCS
+
+// // Grid item width calc
+
+// // // Returns a value based on width, gutter-size and division calculation
+@function grid_item_width_calc(
+  $multiply: 1,
+  $divide: 1,
+  $gutter-size: $gutter-horizontal
+) {
+  $item_size: calc((100% - (#{$gutter-size} * #{$multiply})) / #{$divide});
+  @return $item_size;
+}
