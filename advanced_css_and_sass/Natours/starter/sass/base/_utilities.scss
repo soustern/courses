@@ -40,6 +40,10 @@
 
 .u-margin-top-big {
   margin-top: 8rem !important;
+
+  @include respond(tab-port) {
+    margin-bottom: 5rem !important;
+  }
 }
 
 // // // 4rem

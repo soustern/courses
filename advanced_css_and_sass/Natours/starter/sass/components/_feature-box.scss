@@ -8,6 +8,10 @@
 
   transition: transform 0.2s;
 
+  @include respond(tab-port) {
+    padding: 2rem;
+  }
+
   &:hover {
     transform: translateY(-1.5rem) scale(1.03);
   }
@@ -19,5 +23,9 @@
 
     // Call extend that adds a gradient bcg
     @extend %add_gradient_bcg;
+
+    @include respond(tab-port) {
+      margin-bottom: 0;
+    }
   }
 }

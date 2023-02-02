@@ -7,6 +7,10 @@
   @include default_section_style(-20vh);
 
   padding: 35rem 0;
+
+  @include respond(tab-port) {
+    padding: 20rem 0;
+  }
 }
 
 .section-features {
@@ -31,6 +35,10 @@
 
   // Sen this section upp to go "over" the section above
   margin-top: -11.5vh;
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 .section-tours {
@@ -38,6 +46,10 @@
   @include default_section_style(-11.5vh);
 
   padding: 35rem 0 18rem 0;
+
+  @include respond(tab-port) {
+    padding: 30rem 0 13rem 0;
+  }
 }
 
 .section-stories {
@@ -92,8 +104,39 @@
   //   opacity: 0.9;
   // }
 
+  @include respond(tab-land) {
+    background-image: linear-gradient(
+        105deg,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 70%,
+        transparent 70%
+      ),
+      url(../img/nat-10.jpg);
+
+    background-size: cover;
+  }
+
+  @include respond(tab-port) {
+    background-image: linear-gradient(
+        to right,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 100%
+      ),
+      url(../img/nat-10.jpg);
+
+    background-size: cover;
+  }
+
   &__form {
     width: 50%;
     padding: 6rem;
+
+    @include respond(tab-land) {
+      width: 70%;
+    }
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
   }
 }
