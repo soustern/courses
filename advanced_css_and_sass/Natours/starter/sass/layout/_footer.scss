@@ -8,6 +8,10 @@
   // Set for inheritance of font color
   color: $color-gray-light;
 
+  @include respond(tab-port) {
+    padding: 8rem 0;
+  }
+
   &__logo-box {
     // Inline image behave just like text
     text-align: center;
@@ -25,6 +29,11 @@
 
     // Inline block here so the margin does not occupy 100% of width
     display: inline-block;
+
+    @include respond(tab-port) {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__list {
@@ -66,5 +75,11 @@
     // Setting for symmetries with logo
     width: 80%;
     float: right;
+
+    @include respond(tab-port) {
+      width: 100%;
+      float: none;
+      text-align: center;
+    }
   }
 }

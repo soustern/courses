@@ -19,6 +19,10 @@
 // // Change root font size
 
 html {
+  /* ==========================================================================
+   Styling
+   ========================================================================== */
+
   // This defines what 1rem is
   // 62.5% of 16px -> 10px per rem
   font-size: 62.5%;
@@ -27,7 +31,32 @@ html {
 
   // Useful foe when there is a fixed element that could obstruct the top part of a section (such as a fixed header)
   // No necessary in this case, but some of the section could be obstructed on height of a phone, for example
-  scroll-padding-top: 10rem;
+  scroll-padding-top: 5rem;
+
+  /* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+  /* Big desktop
+   ========================================================================== */
+
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+
+  /* Tablet Landscape
+   ========================================================================== */
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+
+  /* Tablet Portrait
+   ========================================================================== */
+
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
 }
 
 // // Change body box-sizing
@@ -35,4 +64,15 @@ html {
 body {
   box-sizing: border-box;
   padding: 3rem;
+
+  /* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+  /* Tablet Landscape
+   ========================================================================== */
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }

@@ -13,6 +13,12 @@
 
   border-radius: 1.5rem 1.5rem 0rem 0rem;
 
+  @include respond(phone) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+
+    clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+  }
+
   &__logo-box {
     position: absolute;
 

@@ -1,11 +1,59 @@
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+/**
+ * 0 - 600: Phone
+ * 600 - 900: Tablet Portrait
+ * 900 - 1200: Tablet Landscape
+ * 1800 + : Big Desktop 
+ */
+/**
+ * $breakpoint argument choices
+ * - phone
+ * - tab-port
+ * - tab-land
+ * - big-desktop
+ *
+ * @disclaimer em are a better unity for browsers
+ * @disclaimer 1em = 16px || 600px = 37.5em
+ */
 html {
+  /* ==========================================================================
+   Styling
+   ========================================================================== */
   font-size: 62.5%;
   scroll-behavior: smooth;
-  scroll-padding-top: 10rem; }
+  scroll-padding-top: 5rem;
+  /* ==========================================================================
+   Mixins
+   ========================================================================== */
+  /* Big desktop
+   ========================================================================== */
+  /* Tablet Landscape
+   ========================================================================== */
+  /* Tablet Portrait
+   ========================================================================== */ }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
 
 body {
   box-sizing: border-box;
-  padding: 3rem; }
+  padding: 3rem;
+  /* ==========================================================================
+   Mixins
+   ========================================================================== */
+  /* Tablet Landscape
+   ========================================================================== */ }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 *, *::after, *::before {
   margin: 0;
@@ -32,9 +80,26 @@ body {
   -webkit-background-clip: text; }
 
 .row .col-1-of-2, .row .col-1-of-3, .row .col-2-of-3, .row .col-1-of-4, .row .col-2-of-4, .row .col-3-of-4 {
-  float: left; }
+  float: left;
+  /* ==========================================================================
+   Mixins
+   ========================================================================== */
+  /* Tablet Portrait
+   ========================================================================== */ }
   .row .col-1-of-2:not(:last-child), .row .col-1-of-3:not(:last-child), .row .col-2-of-3:not(:last-child), .row .col-1-of-4:not(:last-child), .row .col-2-of-4:not(:last-child), .row .col-3-of-4:not(:last-child) {
-    margin: 0 6rem 0 0; }
+    margin: 0 6rem 0 0;
+    /* ==========================================================================
+    Mixins
+    ========================================================================== */
+    /* Tablet Portrait
+    ========================================================================== */ }
+    @media (max-width: 56.25em) {
+      .row .col-1-of-2:not(:last-child), .row .col-1-of-3:not(:last-child), .row .col-2-of-3:not(:last-child), .row .col-1-of-4:not(:last-child), .row .col-2-of-4:not(:last-child), .row .col-3-of-4:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 6rem; } }
+  @media (max-width: 56.25em) {
+    .row .col-1-of-2, .row .col-1-of-3, .row .col-2-of-3, .row .col-1-of-4, .row .col-2-of-4, .row .col-3-of-4 {
+      width: 100% !important; } }
 
 @keyframes moveInLeft {
   /* We begin at 0%, before the animation actually start */
@@ -132,6 +197,12 @@ body {
     text-indent: 4rem;
     animation-name: moveInLeft;
     animation-duration: 1s; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        /* Other */
+        letter-spacing: 1rem;
+        font-size: 5rem;
+        text-indent: 0; } }
   .heading-primary--sub {
     display: block;
     font-size: 5rem;
@@ -139,6 +210,10 @@ body {
     letter-spacing: 1.74rem;
     animation-name: moveInRight;
     animation-duration: 1s; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: 0.5rem;
+        font-size: 2rem; } }
 
 .heading-secondary {
   font-size: 4rem;
@@ -147,6 +222,12 @@ body {
   letter-spacing: 0.2rem;
   display: inline-block;
   transition: all 0.2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(0.2deg) skewX(5deg);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.1); }
@@ -194,6 +275,10 @@ body {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   border-radius: 1.5rem 1.5rem 0rem 0rem; }
+  @media (max-width: 37.5em) {
+    .header {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%); } }
   .header__logo-box {
     position: absolute;
     top: 4rem;
@@ -209,9 +294,26 @@ body {
 
 .row {
   max-width: 130rem;
-  margin: 0 auto 0 auto; }
+  margin: 0 auto 0 auto;
+  /* ==========================================================================
+    Mixins
+    ========================================================================== */
+  /* Tablet Portrait
+    ========================================================================== */ }
   .row:not(:last-child) {
-    margin: 0 auto 8rem auto; }
+    margin: 0 auto 8rem auto;
+    /* ==========================================================================
+    Mixins
+    ========================================================================== */
+    /* Tablet Portrait
+    ========================================================================== */ }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin: 0 auto 6rem auto; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
   .row::after {
     content: "";
     clear: both;
@@ -241,6 +343,9 @@ body {
   font-size: 1.5rem;
   border-radius: 0 0 1.5rem 1.5rem;
   color: #eee; }
+  @media (max-width: 56.25em) {
+    .footer {
+      padding: 8rem 0; } }
   .footer__logo-box {
     text-align: center;
     margin-bottom: 8rem; }
@@ -251,6 +356,10 @@ body {
     border-top: 1px solid #777;
     padding-top: 2rem;
     display: inline-block; }
+    @media (max-width: 56.25em) {
+      .footer__navigation {
+        width: 100%;
+        text-align: center; } }
   .footer__list {
     list-style: none; }
   .footer__item {
@@ -274,6 +383,11 @@ body {
     padding-top: 2rem;
     width: 80%;
     float: right; }
+    @media (max-width: 56.25em) {
+      .footer__copyright {
+        width: 100%;
+        float: none;
+        text-align: center; } }
 
 .navigation__checkbox {
   display: none; }
@@ -297,6 +411,14 @@ body {
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
   text-align: center;
   cursor: pointer; }
+  @media (max-width: 56.25em) {
+    .navigation__button {
+      top: 4rem;
+      right: 4rem; } }
+  @media (max-width: 56.25em) {
+    .navigation__button {
+      top: 3rem;
+      right: 3rem; } }
 
 .navigation__icon {
   position: relative;
@@ -343,6 +465,14 @@ body {
   background-image: radial-gradient(#55c57a, #28b485);
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
+  @media (max-width: 56.25em) {
+    .navigation__background {
+      top: 4.5rem;
+      right: 4.5rem; } }
+  @media (max-width: 37.5em) {
+    .navigation__background {
+      top: 3.5rem;
+      right: 3.5rem; } }
 
 .navigation__nav {
   height: 100vh;
