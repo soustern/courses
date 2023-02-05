@@ -1,0 +1,49 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0;
+}
+
+.section {
+  background-color: #23424a;
+  padding: 150px 100px;
+}
+
+.section h1 {
+  color: white;
+  font-weight: 900;
+  font-size: 48px;
+}
+.section p {
+  color: white;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 2rem;
+}
+
+button {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 21px;
+  padding: 1em 2.15em;
+  border-radius: 50px;
+  border-style: none;
+  background-color: #38cfd9;
+  color: #23424a;
+}
+
+.container {
+  width: 55%;
+}
+
+.margin-top-400 {
+  margin-top: 4rem;
+}
