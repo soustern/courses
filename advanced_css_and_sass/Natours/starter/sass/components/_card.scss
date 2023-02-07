@@ -243,7 +243,9 @@
     font-weight: 100;
   }
 
-  @include respond(tab-port) {
+  // Use the following media query in devices that are unable to hover (such as ipad in landscape mode) as wel
+  // // A device that uses touch as the primary input
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     background-color: $color-white;
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);

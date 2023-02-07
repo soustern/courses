@@ -1,0 +1,537 @@
+/* ==========================================================================
+   LOGO - b
+   ========================================================================== */
+
+.logo {
+  /* Display & Box Model */
+  height: 3.25rem;
+
+  /* Positioning*/
+  margin-left: 2rem;
+}
+
+/* ==========================================================================
+   LOGO - e
+   ========================================================================== */
+
+/* ==========================================================================
+   SEARCH - b
+   ========================================================================== */
+
+.search {
+  /* Display & Box Model */
+  display: flex;
+  flex: 0 0 40%; // Grow, Shrink, basis (shorthand)
+
+  /* Positioning*/
+  align-items: center;
+  justify-content: center;
+
+  /* input - b
+   ========================================================================== */
+
+  &__input {
+    /* Display & Box Model */
+    width: 90%;
+
+    /* Positioning*/
+    margin-right: -3.25rem;
+    padding: 0.7rem 2rem;
+
+    /* Other */
+    background-color: var(--color-grey-light-2);
+    border-radius: 100px;
+    border: none;
+    color: inherit;
+    font-family: inherit; // Input does not inherit fnt family/size automatically
+    font-size: inherit;
+    transition: all 0.2s;
+
+    /* focus - b
+   ========================================================================== */
+
+    &:focus {
+      outline: none;
+      width: 100%;
+      background-color: var(--color-grey-light-3);
+    }
+
+    /* focus - e
+   ========================================================================== */
+
+    /* placeholder - b
+   ========================================================================== */
+
+    &::placeholder {
+      /* Other */
+      color: var(--color-grey-light-4);
+      font-weight: 100;
+    }
+
+    /* placeholder - e
+   ========================================================================== */
+  }
+
+  /* input - e
+   ========================================================================== */
+
+  /* button - b
+   ========================================================================== */
+
+  &__button {
+    /* Other */
+    border: none;
+    background-color: var(--color-grey-light-2);
+
+    /* focus - b
+   ========================================================================== */
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      translate: 0 2px;
+    }
+
+    /* focus - e
+   ========================================================================== */
+  }
+
+  /* button - e
+   ========================================================================== */
+
+  /* icon - b
+   ========================================================================== */
+
+  &__icon {
+    /* Display & Box Model */
+    height: 2rem; // Resize svg with h and w
+    width: 2rem;
+
+    /* Other */
+    fill: var(--color-grey-dark-3); // Use to change svg color
+  }
+
+  /* icon - e
+   ========================================================================== */
+
+  /* misc - b
+   ========================================================================== */
+
+  /**
+  * Make icon bcg equal to input bcg
+  *
+  * When focused, input bcg change to a darker color.
+  * 
+  * The following code selects the icon and gives it 
+  * the same treatment
+  */
+
+  &__input:focus + &__button {
+    background-color: var(--color-grey-light-3);
+  }
+
+  /* misc - e
+   ========================================================================== */
+}
+
+/* ==========================================================================
+   SEARCH - e
+   ========================================================================== */
+
+/* ==========================================================================
+   USER NAVIGATION - b
+   ========================================================================== */
+
+.user-nav {
+  /* Display & Box Model */
+  display: flex;
+
+  /* Positioning */
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+
+  /* icon - b
+   ========================================================================== */
+  &__icon-box {
+    /* Positioning */
+    position: relative;
+  }
+  /* icon - b
+   ========================================================================== */
+
+  /* icon - b
+   ========================================================================== */
+  &__icon {
+    /* Display & Box Model */
+    height: 2.25rem;
+    width: 2.25rem;
+
+    /* Other */
+    fill: var(--color-grey-dark-2);
+  }
+  /* icon - b
+   ========================================================================== */
+
+  /* icon - b
+   ========================================================================== */
+  &__notification {
+    /* Display & Box Model */
+    display: flex;
+    height: 1.75rem;
+    width: 1.75rem;
+
+    /* Positioning */
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1.1rem;
+    top: 1.5rem;
+
+    /* Other */
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 0.8rem;
+  }
+  /* icon - b
+   ========================================================================== */
+
+  /* icon - b
+   ========================================================================== */
+  &__user-photo {
+    /* Display & Box Model */
+    height: 3.75rem;
+
+    /* Positioning */
+    margin-right: 1rem;
+
+    /* Other */
+    border-radius: 50%;
+  }
+  /* icon - b
+   ========================================================================== */
+
+  /* misc - b
+   ========================================================================== */
+
+  /**
+  * Select all direct children.
+  *
+  * Apply a box-like style to every
+  * direct children of this elements.
+  *
+  * Create visual of separated sections.
+  */
+
+  & > * {
+    /* Display & Box Model */
+    display: flex;
+    height: 100%;
+
+    /* Positioning */
+    align-items: center;
+    padding: 0 2rem;
+
+    /* Other */
+    cursor: pointer;
+  }
+
+  & > *:hover {
+    background-color: var(--color-grey-light-2);
+  }
+
+  /* misc - e
+   ========================================================================== */
+}
+
+/* ==========================================================================
+   USER NAVIGATION - e
+   ========================================================================== */
+
+/* ==========================================================================
+   SIDE NAVIGATION - b
+   ========================================================================== */
+
+.side-nav {
+  /* Positioning */
+  margin-top: 3.5rem;
+
+  /* Other */
+  font-size: 1.4rem;
+  list-style: none;
+
+  &__item {
+    /* Positioning */
+    position: relative;
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__link:link,
+  &__link:visited {
+    /* Display & Box Model */
+    display: block;
+    display: flex;
+
+    /* Positioning */
+    align-items: center;
+    padding: 1.5rem 3rem;
+    position: relative; // z-index only work with a posi. specified
+    z-index: 10;
+
+    /* Other */
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__icon {
+    /* Display & Box Model */
+    height: 1.75rem;
+    width: 1.75rem;
+
+    /* Positioning */
+    margin-right: 2rem;
+
+    /* Other */
+    fill: currentColor; // Selects parent color
+  }
+
+  /* misc - b
+   ========================================================================== */
+
+  /**
+  * Define a before element.
+  *
+  * Used to make a hover effect. We can forget about adding
+  * cubic bezier (timing functions) to ou animations.
+  *
+  * Also, pay attention to the scale, transform-origin
+  * and transition properties.
+  */
+
+  &__item::before {
+    /* Display & Box Model */
+    content: "";
+    height: 100%;
+    width: 3px;
+
+    /* Positioning */
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    /* Other */
+    background-color: var(--color-primary);
+    transform-origin: middle; // Animation will occur from bottom to top
+    transform: scaleY(0);
+    transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+      background-color 0.1s; // property, duration, timing func, delay
+  }
+
+  &__item:hover::before,
+  &__item--active::before {
+    /* Display & Box Model */
+    width: 100%;
+
+    /* Other */
+    transform: scaleY(1);
+  }
+
+  /**
+  * Define an active state.
+  *
+  * Applied on the ::before element, it will
+  * give the user visual feedback when clicking.
+  *
+  */
+
+  &__item:active::before {
+    background-color: var(--color-primary-light);
+  }
+
+  /* misc - e
+   ========================================================================== */
+}
+
+/* ==========================================================================
+   SIDE NAVIGATION - e
+   ========================================================================== */
+
+/* ==========================================================================
+   LEGAL TEXT- b
+   ========================================================================== */
+
+.legal {
+  /* Positioning */
+  padding: 2.5rem;
+  text-align: center;
+
+  /* Other */
+  color: var(--color-grey-light-4);
+  font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   LEGAL TEXT - e
+   ========================================================================== */
+
+/* ==========================================================================
+   GALLERY- b
+   ========================================================================== */
+
+.gallery {
+  display: flex;
+
+  &__photo {
+    /* Display & Box Model */
+    display: block;
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   GALLERY- e
+   ========================================================================== */
+
+/* ==========================================================================
+   OVERVIEW- b
+   ========================================================================== */
+
+.overview {
+  /* Display & Box Model */
+  display: flex;
+
+  /* Positioning */
+  align-items: center;
+  justify-content: space-between;
+
+  /* Other */
+  border-bottom: 1px solid var(--color-grey-light-2);
+
+  &__heading {
+    /* Positioning */
+    padding: 1.5rem 3rem;
+
+    /* Other */
+    font-size: 2.25rem;
+    font-size: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &__stars {
+    /* Display & Box Model */
+    display: flex;
+
+    /* Positioning */
+    margin-right: auto;
+  }
+
+  &__icon-star,
+  &__icon-location {
+    /* Display & Box Model */
+    height: 1.75rem;
+    width: 1.75rem;
+
+    /* Other */
+    fill: var(--color-primary);
+  }
+
+  &__icon-location {
+    margin-right: 0.5rem;
+  }
+
+  &__location {
+    /* Display & Box Model */
+    display: flex;
+
+    /* Positioning */
+    align-items: center;
+
+    /* Other */
+    font-size: 1.2rem;
+  }
+
+  &__rating {
+    align-items: center;
+    align-self: stretch;
+    background-color: var(--color-primary);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3rem;
+    padding: 0 2.25rem;
+  }
+
+  &__rating-average {
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-bottom: -3px;
+  }
+
+  &__average-count {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+}
+
+/* ==========================================================================
+   OVERVIEW- e
+   ========================================================================== */
+
+/* ==========================================================================
+   BUTTON INLINE- b
+   ========================================================================== */
+
+.btn-inline {
+  /* Display & Box Model */
+  display: inline-block;
+
+  /* Positioning */
+  padding: 0 0 2px 0;
+
+  /* Other */
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid currentColor;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: inherit; // Wil get parent fnt-size | Good for reuse with different size
+  transition: all 0.2s;
+
+  &:hover {
+    /* Other */
+    color: var(--color-grey-dark-1);
+  }
+
+  &:focus {
+    /* Other */
+    animation: pulsate 1s infinite;
+    outline: none;
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba($color: #000000, $alpha: 0.25);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+
+/* ==========================================================================
+   BUTTON INLINE- e
+   ========================================================================== */

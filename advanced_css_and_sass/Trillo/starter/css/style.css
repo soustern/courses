@@ -1,0 +1,542 @@
+/* ==========================================================================
+   imports
+   ========================================================================== */
+/* general
+   ========================================================================== */
+/* ==========================================================================
+   VARIABLES - b
+   ========================================================================== */
+/**
+ * Defined variables.
+ *
+ * Css variables are better then the sass ones because
+ * they can be manipulated by javascript and they go 
+ * trough the cascading process.
+ */
+:root {
+  --color-primary: #eb2f64;
+  --color-primary-light: #ff3366;
+  --color-primary-dark: #ba265d;
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3); }
+
+/* ==========================================================================
+   VARIABLES - e
+   ========================================================================== */
+/* ==========================================================================
+   RESETS - b
+   ========================================================================== */
+/**
+ * All resets document wide.
+ *
+ * Every property that have to be set to a certain so to 
+ * make the document easier to work with.
+ *
+ * In this section, we overwrite a bunch of default browser settings.
+ */
+/* general - b
+   ========================================================================== */
+* {
+  /* Positioning*/
+  margin: 0;
+  padding: 0; }
+
+*,
+*::after,
+*::before {
+  /* Display & Box Model */
+  box-sizing: inherit; }
+
+html {
+  /* Display & Box Model */
+  box-sizing: border-box;
+  /* Other */
+  font-size: 62.5%; }
+
+body {
+  /* Display & Box Model */
+  min-height: 100vh;
+  /* Other */
+  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--color-grey-dark-2);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6; }
+
+/* general - e
+   ========================================================================== */
+/* ==========================================================================
+   RESETS - e
+   ========================================================================== */
+/* ==========================================================================
+   LOGO - b
+   ========================================================================== */
+.logo {
+  /* Display & Box Model */
+  height: 3.25rem;
+  /* Positioning*/
+  margin-left: 2rem; }
+
+/* ==========================================================================
+   LOGO - e
+   ========================================================================== */
+/* ==========================================================================
+   SEARCH - b
+   ========================================================================== */
+.search {
+  /* Display & Box Model */
+  display: flex;
+  flex: 0 0 40%;
+  /* Positioning*/
+  align-items: center;
+  justify-content: center;
+  /* input - b
+   ========================================================================== */
+  /* input - e
+   ========================================================================== */
+  /* button - b
+   ========================================================================== */
+  /* button - e
+   ========================================================================== */
+  /* icon - b
+   ========================================================================== */
+  /* icon - e
+   ========================================================================== */
+  /* misc - b
+   ========================================================================== */
+  /**
+  * Make icon bcg equal to input bcg
+  *
+  * When focused, input bcg change to a darker color.
+  * 
+  * The following code selects the icon and gives it 
+  * the same treatment
+  */
+  /* misc - e
+   ========================================================================== */ }
+  .search__input {
+    /* Display & Box Model */
+    width: 90%;
+    /* Positioning*/
+    margin-right: -3.25rem;
+    padding: 0.7rem 2rem;
+    /* Other */
+    background-color: var(--color-grey-light-2);
+    border-radius: 100px;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    transition: all 0.2s;
+    /* focus - b
+   ========================================================================== */
+    /* focus - e
+   ========================================================================== */
+    /* placeholder - b
+   ========================================================================== */
+    /* placeholder - e
+   ========================================================================== */ }
+    .search__input:focus {
+      outline: none;
+      width: 100%;
+      background-color: var(--color-grey-light-3); }
+    .search__input::placeholder {
+      /* Other */
+      color: var(--color-grey-light-4);
+      font-weight: 100; }
+  .search__button {
+    /* Other */
+    border: none;
+    background-color: var(--color-grey-light-2);
+    /* focus - b
+   ========================================================================== */
+    /* focus - e
+   ========================================================================== */ }
+    .search__button:focus {
+      outline: none; }
+    .search__button:active {
+      translate: 0 2px; }
+  .search__icon {
+    /* Display & Box Model */
+    height: 2rem;
+    width: 2rem;
+    /* Other */
+    fill: var(--color-grey-dark-3); }
+  .search__input:focus + .search__button {
+    background-color: var(--color-grey-light-3); }
+
+/* ==========================================================================
+   SEARCH - e
+   ========================================================================== */
+/* ==========================================================================
+   USER NAVIGATION - b
+   ========================================================================== */
+.user-nav {
+  /* Display & Box Model */
+  display: flex;
+  /* Positioning */
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+  /* icon - b
+   ========================================================================== */
+  /* icon - b
+   ========================================================================== */
+  /* icon - b
+   ========================================================================== */
+  /* icon - b
+   ========================================================================== */
+  /* icon - b
+   ========================================================================== */
+  /* icon - b
+   ========================================================================== */
+  /* icon - b
+   ========================================================================== */
+  /* icon - b
+   ========================================================================== */
+  /* misc - b
+   ========================================================================== */
+  /**
+  * Select all direct children.
+  *
+  * Apply a box-like style to every
+  * direct children of this elements.
+  *
+  * Create visual of separated sections.
+  */
+  /* misc - e
+   ========================================================================== */ }
+  .user-nav__icon-box {
+    /* Positioning */
+    position: relative; }
+  .user-nav__icon {
+    /* Display & Box Model */
+    height: 2.25rem;
+    width: 2.25rem;
+    /* Other */
+    fill: var(--color-grey-dark-2); }
+  .user-nav__notification {
+    /* Display & Box Model */
+    display: flex;
+    height: 1.75rem;
+    width: 1.75rem;
+    /* Positioning */
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1.1rem;
+    top: 1.5rem;
+    /* Other */
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 0.8rem; }
+  .user-nav__user-photo {
+    /* Display & Box Model */
+    height: 3.75rem;
+    /* Positioning */
+    margin-right: 1rem;
+    /* Other */
+    border-radius: 50%; }
+  .user-nav > * {
+    /* Display & Box Model */
+    display: flex;
+    height: 100%;
+    /* Positioning */
+    align-items: center;
+    padding: 0 2rem;
+    /* Other */
+    cursor: pointer; }
+  .user-nav > *:hover {
+    background-color: var(--color-grey-light-2); }
+
+/* ==========================================================================
+   USER NAVIGATION - e
+   ========================================================================== */
+/* ==========================================================================
+   SIDE NAVIGATION - b
+   ========================================================================== */
+.side-nav {
+  /* Positioning */
+  margin-top: 3.5rem;
+  /* Other */
+  font-size: 1.4rem;
+  list-style: none;
+  /* misc - b
+   ========================================================================== */
+  /**
+  * Define a before element.
+  *
+  * Used to make a hover effect. We can forget about adding
+  * cubic bezier (timing functions) to ou animations.
+  *
+  * Also, pay attention to the scale, transform-origin
+  * and transition properties.
+  */
+  /**
+  * Define an active state.
+  *
+  * Applied on the ::before element, it will
+  * give the user visual feedback when clicking.
+  *
+  */
+  /* misc - e
+   ========================================================================== */ }
+  .side-nav__item {
+    /* Positioning */
+    position: relative; }
+    .side-nav__item:not(:last-child) {
+      margin-bottom: 0.5rem; }
+  .side-nav__link:link, .side-nav__link:visited {
+    /* Display & Box Model */
+    display: block;
+    display: flex;
+    /* Positioning */
+    align-items: center;
+    padding: 1.5rem 3rem;
+    position: relative;
+    z-index: 10;
+    /* Other */
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase; }
+  .side-nav__icon {
+    /* Display & Box Model */
+    height: 1.75rem;
+    width: 1.75rem;
+    /* Positioning */
+    margin-right: 2rem;
+    /* Other */
+    fill: currentColor; }
+  .side-nav__item::before {
+    /* Display & Box Model */
+    content: "";
+    height: 100%;
+    width: 3px;
+    /* Positioning */
+    left: 0;
+    position: absolute;
+    top: 0;
+    /* Other */
+    background-color: var(--color-primary);
+    transform-origin: middle;
+    transform: scaleY(0);
+    transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s; }
+  .side-nav__item:hover::before, .side-nav__item--active::before {
+    /* Display & Box Model */
+    width: 100%;
+    /* Other */
+    transform: scaleY(1); }
+  .side-nav__item:active::before {
+    background-color: var(--color-primary-light); }
+
+/* ==========================================================================
+   SIDE NAVIGATION - e
+   ========================================================================== */
+/* ==========================================================================
+   LEGAL TEXT- b
+   ========================================================================== */
+.legal {
+  /* Positioning */
+  padding: 2.5rem;
+  text-align: center;
+  /* Other */
+  color: var(--color-grey-light-4);
+  font-size: 1.2rem; }
+
+/* ==========================================================================
+   LEGAL TEXT - e
+   ========================================================================== */
+/* ==========================================================================
+   GALLERY- b
+   ========================================================================== */
+.gallery {
+  display: flex; }
+  .gallery__photo {
+    /* Display & Box Model */
+    display: block;
+    width: 100%; }
+
+/* ==========================================================================
+   GALLERY- e
+   ========================================================================== */
+/* ==========================================================================
+   OVERVIEW- b
+   ========================================================================== */
+.overview {
+  /* Display & Box Model */
+  display: flex;
+  /* Positioning */
+  align-items: center;
+  justify-content: space-between;
+  /* Other */
+  border-bottom: 1px solid var(--color-grey-light-2); }
+  .overview__heading {
+    /* Positioning */
+    padding: 1.5rem 3rem;
+    /* Other */
+    font-size: 2.25rem;
+    font-size: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase; }
+  .overview__stars {
+    /* Display & Box Model */
+    display: flex;
+    /* Positioning */
+    margin-right: auto; }
+  .overview__icon-star, .overview__icon-location {
+    /* Display & Box Model */
+    height: 1.75rem;
+    width: 1.75rem;
+    /* Other */
+    fill: var(--color-primary); }
+  .overview__icon-location {
+    margin-right: 0.5rem; }
+  .overview__location {
+    /* Display & Box Model */
+    display: flex;
+    /* Positioning */
+    align-items: center;
+    /* Other */
+    font-size: 1.2rem; }
+  .overview__rating {
+    align-items: center;
+    align-self: stretch;
+    background-color: var(--color-primary);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3rem;
+    padding: 0 2.25rem; }
+  .overview__rating-average {
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-bottom: -3px; }
+  .overview__average-count {
+    font-size: 0.8rem;
+    text-transform: uppercase; }
+
+/* ==========================================================================
+   OVERVIEW- e
+   ========================================================================== */
+/* ==========================================================================
+   BUTTON INLINE- b
+   ========================================================================== */
+.btn-inline {
+  /* Display & Box Model */
+  display: inline-block;
+  /* Positioning */
+  padding: 0 0 2px 0;
+  /* Other */
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid currentColor;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: inherit;
+  transition: all 0.2s; }
+  .btn-inline:hover {
+    /* Other */
+    color: var(--color-grey-dark-1); }
+  .btn-inline:focus {
+    /* Other */
+    animation: pulsate 1s infinite;
+    outline: none; }
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    box-shadow: none; }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25); }
+  100% {
+    transform: scale(1);
+    box-shadow: none; } }
+
+/* ==========================================================================
+   BUTTON INLINE- e
+   ========================================================================== */
+/* ==========================================================================
+   CONTAINER - b
+   ========================================================================== */
+.container {
+  /* Display & Box Model */
+  max-width: 120rem;
+  min-height: 50rem;
+  /* Positioning */
+  margin: 8rem auto;
+  /* Other */
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark); }
+
+/* ==========================================================================
+   CONTAINER - e
+   ========================================================================== */
+/* ==========================================================================
+   HEADER - b
+   ========================================================================== */
+.header {
+  /* Display & Box Model */
+  display: flex;
+  height: 7rem;
+  /* Positioning */
+  align-items: center;
+  justify-content: space-between;
+  /* Other */
+  background-color: #fff;
+  border-bottom: 1px solid var(--color-grey-light-2);
+  font-size: 1.4rem; }
+
+/* ==========================================================================
+   HEADER - e
+   ========================================================================== */
+/* ==========================================================================
+   CONTENT - b
+   ========================================================================== */
+.content {
+  /* Display & Box Model */
+  display: flex; }
+
+/* ==========================================================================
+   CONTENT - e
+   ========================================================================== */
+/* ==========================================================================
+   SIDEBAR - b
+   ========================================================================== */
+.sidebar {
+  /* Display & Box Model */
+  display: flex;
+  flex-basis: 18%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  /* Positioning */
+  flex-direction: column;
+  justify-content: space-between;
+  /* Other */
+  background-color: var(--color-grey-dark-1); }
+
+/* ==========================================================================
+   SIDEBAR - e
+   ========================================================================== */
+/* ==========================================================================
+   HOTEL VIEW - b
+   ========================================================================== */
+.hotel-view {
+  /* Display & Box Model */
+  flex-grow: 1;
+  height: 80rem;
+  /* Other */ }
+
+/* ==========================================================================
+   HOTEL VIEW - e
+   ========================================================================== */

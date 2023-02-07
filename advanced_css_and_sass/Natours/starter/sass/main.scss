@@ -6,13 +6,13 @@
 
 // // Base (This need to go first)
 
+@import "abstracts/variables"; // // // All functions
+
 @import "abstracts/mixins"; // // // All functions
 
 @import "base/base"; // // // Base CSS code such as resets and html, body selectors tweaks
 
 // // Abstracts (These need to go second)
-
-@import "abstracts/variables"; // // // All functions
 
 @import "abstracts/functions"; // // // All functions
 

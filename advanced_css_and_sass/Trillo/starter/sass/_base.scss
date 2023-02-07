@@ -1,0 +1,94 @@
+/* ==========================================================================
+   VARIABLES - b
+   ========================================================================== */
+
+/**
+ * Defined variables.
+ *
+ * Css variables are better then the sass ones because
+ * they can be manipulated by javascript and they go 
+ * trough the cascading process.
+ */
+
+:root {
+  --color-primary: #eb2f64;
+  --color-primary-light: #ff3366;
+  --color-primary-dark: #ba265d;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   VARIABLES - e
+   ========================================================================== */
+
+/* ==========================================================================
+   RESETS - b
+   ========================================================================== */
+
+/**
+ * All resets document wide.
+ *
+ * Every property that have to be set to a certain so to 
+ * make the document easier to work with.
+ *
+ * In this section, we overwrite a bunch of default browser settings.
+ */
+
+/* general - b
+   ========================================================================== */
+
+* {
+  /* Positioning*/
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  /* Display & Box Model */
+  box-sizing: inherit;
+}
+
+html {
+  /* Display & Box Model */
+  box-sizing: border-box;
+
+  /* Other */
+  font-size: 62.5%; // Set root font-size to 10px | 62.5% of 16px = 10px
+}
+
+body {
+  /* Display & Box Model */
+  min-height: 100vh;
+
+  /* Other */
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--color-grey-dark-2);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* general - e
+   ========================================================================== */
+
+/* ==========================================================================
+   RESETS - e
+   ========================================================================== */

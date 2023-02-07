@@ -1,4 +1,5 @@
 .popup {
+  backdrop-filter: blur(3px);
   background-color: rgba($color: $color-black, $alpha: 0.8);
   height: 100vh;
   left: 0;
@@ -9,6 +10,12 @@
   visibility: hidden;
   width: 100vw;
   z-index: 5000;
+
+  // The properties inside brackets will be applied only if that browser supports the property being passed as an argument.
+  @supports (backdrop-filter: blur(3px)) {
+    backdrop-filter: blur(10px);
+    background-color: rgba($color: $color-black, $alpha: 0.3);
+  }
 
   // Do to this element id being an anchored to by the buttons that should trigger it
   // We can use the pseudo-selector "target" for this elements to be selected only when said buttons are clicked

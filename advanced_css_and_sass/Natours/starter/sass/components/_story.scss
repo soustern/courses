@@ -29,27 +29,34 @@
   }
 
   &__shape {
-    width: 15rem;
-    height: 15rem;
     float: left;
-
-    // Use the next property to make the text float around the shape | Defines where the content flows around the element
-    // // Try turning off to see what happens
-    // // Use circle value to make the text react to a circle shape
-    // // // Shorthand: radius-of-the-circle, position-of-the-circle (We set it to the exact center in this case
-    // // // THE "SHAPE OUTSIDE" PROPERTY MUST BE ON A ELEMENT THAT IS FLOATED AND HAVE HEIGHT/WIDTH VALUES DEFINED
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
 
     // The best way to move aro und a floated object is with the transform property
     // Skew here so the img is not titled like its parent element
     transform: translateX(-3rem) skewX(12deg);
 
+    overflow: hidden;
+
     @include respond(tab-phone) {
       transform: translateX(-3rem) skewX(0);
+    }
+
+    @supports (clip-path: polygon(0 0)) or (--webkit-clip-path: polygon(0 0)) {
+      // Use the next property to make the text float around the shape | Defines where the content flows around the element
+      // // Try turning off to see what happens
+      // // Use circle value to make the text react to a circle shape
+      // // // Shorthand: radius-of-the-circle, position-of-the-circle (We set it to the exact center in this case
+      // // // THE "SHAPE OUTSIDE" PROPERTY MUST BE ON A ELEMENT THAT IS FLOATED AND HAVE HEIGHT/WIDTH VALUES DEFINED
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);
+
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+
+      border-radius: none;
     }
   }
 
