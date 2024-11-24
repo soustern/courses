@@ -1,129 +1,60 @@
-// MAIN BUTTONS
-
-// // Default button link | visited | hover/after | active | after | white/after | animated
+// Use LoVe HAte principle when styling links
 
 .btn {
-  // Button default styles must be extended here as well because
-  // // this is for <button> elements, they do not have th states bellow
-  // // // Buttons HTML element does not have a :link or :visited
-  @extend %default_button;
-
-  // STATES
-
-  &:link {
-    @extend %default_button;
-  }
-
-  &:visited {
-    @extend %default_button;
-  }
-
-  &:hover {
-    transform: translateY(-0.3rem);
-
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
-
-    &::after {
-      transform: scaleX(1.4) scaleY(1.6);
-      opacity: 0;
+    &:link, &:visited {
+        border-radius: 10rem;
+        display: inline-block;
+        font-size: 1.6rem;
+        padding: 1.5rem 4rem;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: all .2s;
     }
-  }
 
-  //  Add focus here as well to to apply the same style for <button> HTML element
-  // // Focus should never be completely eliminated because of accessibility reasons
-  &:focus,
-  &:active {
-    transform: translateY(-0.1rem);
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
 
-    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.3);
-  }
-
-  &::after {
-    content: "";
-
-    display: inline-block;
-
-    height: 100%;
-    width: 100%;
-
-    border-radius: 10rem;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    z-index: -1;
-
-    transition: all 0.4s;
-  }
-
-  // MODIFIERS
-
-  // // Color
-
-  &--white {
-    background-color: $color-white;
-    color: $color-gray-dark;
-
-    &::after {
-      background-color: $color-white;
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6); 
+            opacity: 0;
+        }
     }
-  }
-
-  &--green {
-    background-color: $color-primary-light;
-    color: $color-white;
-
-    &::after {
-      background-color: $color-primary-light;
+    
+    &:active {
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem .1rem rgba($color-black, .2);
     }
-  }
+    
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
 
-  // // Animation
+        &::after {
+            background-color: $color-white;
+        }
+    }
 
-  &--animated {
-    animation: moveInBottom 0.35s ease-out 0.75s;
+    /* In order for a after pseudo element to appear on the page, one must specify
+    a content and display property */
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
 
-    animation-fill-mode: backwards;
-  }
-}
-
-// MISC BUTTONS
-
-// // No background color button
-
-.btn-text {
-  &:link {
-    color: $color-primary-dark;
-    font-size: $default-font-size;
-
-    // This is originally inline, we make it inline-block to be able to use block properties, such as padding and margin up/down
-    display: inline-block;
-
-    text-decoration: none;
-
-    // Pixels here bcs value to small to be changed by user
-    border-bottom: 0.8px solid $color-primary-dark;
-    padding: 5px;
-
-    transition: all 0.2s;
-  }
-
-  &:visited {
-    color: $color-primary-dark;
-  }
-
-  &:hover {
-    color: white;
-    border-bottom: 2px solid $color-primary;
-    background-color: $color-primary;
-    transform: translateY(-0.5rem);
-    box-shadow: 0 0.1rem 1.5rem rgba($color: $color-black, $alpha: 0.2);
-  }
-
-  &:active {
-    transform: translateY(-0.1rem);
-
-    box-shadow: 0 0.2rem 0.5rem rgba($color-black, 0.25);
-  }
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        /*  This applies the styles specified on the 0% part of the animation from the go, makes it so the button
+            appears at 0 opacity without it having to be specified on the class itself, but in the animation */
+        animation-fill-mode: backwards;
+    }
 }

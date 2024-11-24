@@ -1,119 +1,38 @@
-// MACRO DEFINITIONS
-
 body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
+    /* font-size: 16px; */
+    color: $color-grey-dark;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
 
-  font-size: $default-font-size;
-
-  line-height: 1.7;
-  color: $color-gray-dark;
 }
-
-// MAIN HEADINGS
-
-//  // Primary Heading text | Main | Sub (H1)
 
 .heading-primary {
-  color: $color-white;
-  text-transform: uppercase;
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
 
-  backface-visibility: hidden;
-
-  margin-bottom: 6rem;
-
-  &--main {
-    display: block;
-
-    font-size: 9rem;
-
-    font-weight: 400;
-
-    letter-spacing: 6rem;
-
-    text-indent: 4rem;
-
-    animation-name: moveInLeft;
-
-    animation-duration: 1s;
-
-    @include respond(phone) {
-      /* Other */
-      letter-spacing: 1rem;
-      font-size: 5rem;
-      text-indent: 0;
+    &--main {
+        /* animation-delay: 3s; */
+        /* animation-iteration-count: 3; */
+        animation-duration: 1s;
+        animation-name: moveInLeft;
+        animation-timing-function: ease-out;
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
     }
-  }
 
-  &--sub {
-    display: block;
-
-    font-size: 5rem;
-
-    font-weight: 400;
-
-    letter-spacing: 1.74rem;
-
-    animation-name: moveInRight;
-
-    animation-duration: 1s;
-
-    @include respond(phone) {
-      letter-spacing: 0.5rem;
-      font-size: 2rem;
+    &--sub {
+        animation-duration: 1s;
+        animation-name: moveInRight;
+        animation-timing-function: ease-out;
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
     }
-  }
-}
-
-// // Secondary Heading
-.heading-secondary {
-  font-size: 4rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.2rem;
-
-  // Must be like this so the gradient does not occupy 100%vw
-  display: inline-block;
-
-  // Call extend that adds a gradient bcg
-  @extend %add_gradient_bcg;
-
-  // Set smooth transition to :hover state
-  transition: all 0.2s;
-
-  @include respond(tab-port) {
-    font-size: 3rem;
-  }
-
-  @include respond(phone) {
-    font-size: 2.5rem;
-  }
-
-  &:hover {
-    // Skew func work with deg (degree) values
-    transform: skewY(0.2deg) skewX(5deg);
-
-    text-shadow: 0.5rem 1rem 2rem rgba($color: #000000, $alpha: 0.1);
-  }
-}
-
-// // Tertiary Heading
-
-.heading-tertiary {
-  font-size: $default-font-size;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-// MISC
-
-// // Default Paragraph
-
-.paragraph {
-  font-size: $default-font-size;
-
-  // Margin bottom in all paragraphs minus the last child
-  &:not(:last-child) {
-    margin-bottom: 3rem;
-  }
+    
 }
